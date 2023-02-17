@@ -55,8 +55,6 @@ namespace FoodCalculator
                 }
                 var a = DB.FoodList.Find(number);
                 DB.FoodList.Remove(a);
-                
-                    
                 DB.SaveChanges();
                 //FoodList.RemoveAt(number);
             });

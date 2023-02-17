@@ -74,11 +74,12 @@ namespace FoodCalculator
         public RelayCommand CalcFoodCommand { get; set; }
         public MainWindowViewModel()
         {
-            WeekOfFood = new List<(Food BreakFast, Food Lunch, Food LunchSalad, Food Dinner, Food DinnerSalad)>();
+           
             CalcFoodCommand = new RelayCommand(obj =>
             {
-                if (Linker.ViewModels.Count > 0 && FoodList.Count == 0)
+                if (Linker.ViewModels.Count > 0 )
                 {
+                    WeekOfFood = new List<(Food BreakFast, Food Lunch, Food LunchSalad, Food Dinner, Food DinnerSalad)>();
                     FoodCalcer foodCalculator = Linker.ViewModels.First() as FoodCalcer;
                     FoodList = foodCalculator.FoodList;
                     List<Food> breakfastFood = new List<Food>();
@@ -87,32 +88,46 @@ namespace FoodCalculator
                     List<Food> soupFood = new List<Food>();
                     List<Food> saladFood = new List<Food>();
 
+                    Queue<Food> breakfastFoodQueue = new Queue<Food>();
+                    Queue<Food> garnishFoodQueue = new Queue<Food>();
+                    Queue<Food> mainFoodQueue = new Queue<Food>();
+                    Queue<Food> soupFoodQueue = new Queue<Food>();
+                    Queue<Food> saladFoodQueue = new Queue<Food>();
 
-                    BreakfastRationList = new ObservableCollection<string>();
-                    LunchRationList = new ObservableCollection<string>();
-                    DinnerRationList = new ObservableCollection<string>();
-                    
+                    List<Food> BreaksfastWeek = new List<Food>();
+                    List<Food> LunchtWeek = new List<Food>();
+                    List<Food> DinnerWeek = new List<Food>();
+
+                    if (breakfastFoodQueue.Count<1)
+                    {
+
+                    }
                     foreach (var element in FoodList)
                     {
                         if (element.Type == Food.FoodType.Eggs.ToString() || element.Type == Food.FoodType.KaWa.ToString())
                         {
-                            breakfastFood.Add(element);
+                            for (int i = 0; i < element.Modifier; i++)
+                                breakfastFood.Add(element);
                         }
                         else if (element.Type == Food.FoodType.Garnish.ToString())
                         {
-                            garnishFood.Add(element);
+                            for (int i = 0; i < element.Modifier; i++)
+                                garnishFood.Add(element);
                         }
                         else if (element.Type == Food.FoodType.Main.ToString())
                         {
-                            mainFood.Add(element);
+                            for (int i = 0; i < element.Modifier; i++)
+                                mainFood.Add(element);
                         }
                         else if (element.Type == Food.FoodType.Soup.ToString())
                         {
-                            soupFood.Add(element);
+                            for (int i = 0; i < element.Modifier; i++)
+                                soupFood.Add(element);
                         }
                         else if (element.Type == Food.FoodType.Salad.ToString())
                         {
-                            saladFood.Add(element);
+                            for (int i = 0; i < element.Modifier; i++)
+                                saladFood.Add(element);
                         }
                     }
 
