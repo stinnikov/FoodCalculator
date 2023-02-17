@@ -80,7 +80,7 @@ namespace FoodCalculator
                 if (Linker.ViewModels.Count > 0 && FoodList.Count == 0)
                 {
                     FoodCalcer foodCalculator = Linker.ViewModels.First() as FoodCalcer;
-                    FoodList = new ObservableCollection<Food>();
+                    FoodList = foodCalculator.FoodList;
                     List<Food> breakfastFood = new List<Food>();
                     List<Food> garnishFood = new List<Food>();
                     List<Food> mainFood = new List<Food>();
@@ -91,10 +91,7 @@ namespace FoodCalculator
                     BreakfastRationList = new ObservableCollection<string>();
                     LunchRationList = new ObservableCollection<string>();
                     DinnerRationList = new ObservableCollection<string>();
-                    foreach (var element in foodCalculator.FoodList)
-                    {
-                        FoodList.Add(element);
-                    }
+                    
                     foreach (var element in FoodList)
                     {
                         if (element.Type == Food.FoodType.Eggs.ToString() || element.Type == Food.FoodType.KaWa.ToString())

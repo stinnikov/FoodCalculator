@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Xml.Linq;
 
 namespace FoodCalculator
 {
@@ -52,12 +53,12 @@ namespace FoodCalculator
                 {
                     FoodList[i].Id--;
                 }
-
-
-                DB.FoodList.Remove(obj as Food);
+                var a = DB.FoodList.Find(number);
+                DB.FoodList.Remove(a);
+                
+                    
                 DB.SaveChanges();
-                FoodList.RemoveAt(number);
-
+                //FoodList.RemoveAt(number);
             });
             Increment = new RelayCommand(obj =>
             {
